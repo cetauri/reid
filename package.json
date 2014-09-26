@@ -1,0 +1,12 @@
+{
+    "name": "reid",
+    "description": "Dr. Spencer Reid",
+    "version": "0.1.1",
+    "private": true,
+    "scripts": {
+        "start": "NODE_ENV=production sexy app.js"
+    },
+    "dependencies": {
+        "express": "4.x"
+    }
+}
