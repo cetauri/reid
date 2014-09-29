@@ -31,10 +31,10 @@ app.route('/cache')
 
   	rClient.get(req.query.key, function (err, reply) {
   		if (err != null) {
-			res.json({value : "", message : err}); 	//TODO : REFACTOR
+			 res.json({value : "", message : err}); 	//TODO : REFACTOR
 			return;
   		} 
-        res.json({value : reply});	
+        res.json({status : 0, value : reply});	
     });
   })
   .post(function(req, res) {
@@ -50,7 +50,7 @@ app.route('/cache')
   .delete(function(req, res) {
   	//TODO Exception
   	var key = req.query.key;
-	rClient.del(key);	
+	 rClient.del(key);	
     res.json({status : 0});
 
   });
