@@ -3,6 +3,7 @@
 var os = require('os');
 var util = require("util");
 var redis = require("redis");
+// var config = require("./config");
 var rClient = redis.createClient();//    rc = new redis.createClient(s.REDIS_PORT, s.REDIS_URL, null);
 
 var express = require('express');
@@ -42,9 +43,12 @@ app.route('/cache')
   	var key = req.query.key;
   	var value = req.query.value;
   	var ttl = req.query.ttl;
-
-    rClient.set(key, value);
-	rClient.expire(key, ttl);
+    
+    if (ttl == undefined){
+        ttl = "2592000";  //30일
+    }
+    
+    rClient.SETEX(key, ttl, value);
     res.json({status : 0});
   })
   .delete(function(req, res) {
