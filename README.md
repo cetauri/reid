@@ -75,7 +75,7 @@ POST ~/cache
 ------|-----|----|-----|
 |key 	| 키(key)	| Required	| cetauri	|
 |value	| 값(value)	| Required	| 1979	|
-|ttl 	| Time to Live, 초단위 | Optional	| 5	|
+|ttl 	| Time to Live, 초단위  | Optional (기본 1달 : 2592000)	| 5	|
 
 
 ### Response
@@ -86,7 +86,7 @@ POST ~/cache
 }
 ```
 
-## - 데이터 가져오기
+## - 1개 데이터 가져오기
 ```
 GET ~/cache
 ```
@@ -106,6 +106,29 @@ GET ~/cache
 }
 ```
 
+## - 여러 데이터 가져오기
+```
+GET ~/cache?key=cetauri&key=toto
+```
+
+### Response
+
+```
+{
+    "status": 0,
+    "list": [
+        {
+            "key": "cetauri",
+            "value": "권오상"
+        },
+        {
+            "key": "toto",
+            "value": "김태호"
+        }
+    ]
+}
+```
+
 ## - 데이터 삭제
 ```
 DELETE ~/cache
@@ -122,6 +145,20 @@ DELETE ~/cache
 ```
 {
     "status": 0
+}
+```
+
+
+
+## - 에러
+
+
+### Response
+
+```
+{
+    "status": -1,
+    "message": "Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED"
 }
 ```
 
