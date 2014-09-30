@@ -8,6 +8,8 @@
     },
     "dependencies": {
         "express": "4.x",
-        "redis": "*"
+        "mailgun": "~0.4.2",
+        "redis": "*",
+        "errorhandler":"1.2.0"
     }
 }
